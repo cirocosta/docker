@@ -57,6 +57,7 @@ type ContainerSpec struct {
 	Privileges      *Privileges             `json:",omitempty"`
 	StopSignal      string                  `json:",omitempty"`
 	TTY             bool                    `json:",omitempty"`
+	Privileged            bool                    `json:",omitempty"`
 	OpenStdin       bool                    `json:",omitempty"`
 	ReadOnly        bool                    `json:",omitempty"`
 	Mounts          []mount.Mount           `json:",omitempty"`

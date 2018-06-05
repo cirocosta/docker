@@ -17,6 +17,7 @@ func containerSpecFromGRPC(c *swarmapi.ContainerSpec) *types.ContainerSpec {
 	if c == nil {
 		return nil
 	}
+
 	containerSpec := &types.ContainerSpec{
 		Image:      c.Image,
 		Labels:     c.Labels,
@@ -32,6 +33,7 @@ func containerSpecFromGRPC(c *swarmapi.ContainerSpec) *types.ContainerSpec {
 		OpenStdin:  c.OpenStdin,
 		ReadOnly:   c.ReadOnly,
 		Hosts:      c.Hosts,
+    Privileged: c.Privileged,
 		Secrets:    secretReferencesFromGRPC(c.Secrets),
 		Configs:    configReferencesFromGRPC(c.Configs),
 		Isolation:  IsolationFromGRPC(c.Isolation),
@@ -228,6 +230,7 @@ func containerToGRPC(c *types.ContainerSpec) (*swarmapi.ContainerSpec, error) {
 		Groups:     c.Groups,
 		StopSignal: c.StopSignal,
 		TTY:        c.TTY,
+    Privileged: c.Privileged,
 		OpenStdin:  c.OpenStdin,
 		ReadOnly:   c.ReadOnly,
 		Hosts:      c.Hosts,
